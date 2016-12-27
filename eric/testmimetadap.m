@@ -9,5 +9,5 @@ metodo=@mieuler; p=1;
 %metodo=@mitrap; p=2;
 
 [t,u,H,ERROR] = mimetadap ...
-    (tinic,tfin,x0,h0,hmin,TOL,fun,metodo,p,[]);
+    (tinic,tfin,x0,h0,hmin,TOL,fun,metodo,p,par);
 misgraficas

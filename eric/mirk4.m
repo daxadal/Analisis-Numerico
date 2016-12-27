@@ -13,10 +13,10 @@ K=zeros(dim,4);
 %Algoritmo
 u(:,1)=x0;
 for n=1:N
-    K(:,1)=f(t(n), u(:,n));
-    K(:,2)=f(t(n)+h/2, u(:,n)+h*K(:,1)/2);
-    K(:,3)=f(t(n)+h/2, u(:,n)+h*K(:,2)/2);
-    K(:,4)=f(t(n)+h, u(:,n)+h*K(:,3));
+    K(:,1)=f(t(n), u(:,n),par);
+    K(:,2)=f(t(n)+h/2, u(:,n)+h*K(:,1)/2,par);
+    K(:,3)=f(t(n)+h/2, u(:,n)+h*K(:,2)/2,par);
+    K(:,4)=f(t(n)+h, u(:,n)+h*K(:,3),par);
     u(:,n+1)=u(:,n)+h*K*b;
 end
 end

@@ -21,8 +21,8 @@ u(:,1)=x0;
 n=1;
 while t(:,n)<tfin
     %Estimación con paso h con ambos métodos
-    [t_dummy,u_ext] = met_ext(t(n),t(n)+h,1,u(:,n),f,[]);
-    [t_dummy,u_int] = met_int(t(n),t(n)+h,1,u(:,n),f,[]);
+    [t_dummy,u_ext] = met_ext(t(n),t(n)+h,1,u(:,n),f,par);
+    [t_dummy,u_int] = met_int(t(n),t(n)+h,1,u(:,n),f,par);
     
     %Si la diferencia entre ambos resultados es aceptable, guardamos el resultado
     ERR = norm( u_ext(:,2)-u_int(:,2) )/h;

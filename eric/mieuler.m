@@ -9,7 +9,7 @@ u=zeros(dim,N+1);
 %Algoritmo
 u(:,1)=x0;
 for n=1:N
-    u(:,n+1)=u(:,n)+h*f(t(n),u(:,n));
+    u(:,n+1)=u(:,n)+h*f(t(n),u(:,n),par);
 end
 end
 

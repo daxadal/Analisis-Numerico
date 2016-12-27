@@ -34,9 +34,9 @@ u(:,1)=x0;
 n=1;
 while t(:,n)<tfin
     
-    K(:,1)=f(t(n), u(:,n));
+    K(:,1)=f(t(n), u(:,n,par));
     for i=2:6
-        K(:,i)=f(t(n)+h*c(i), u(:,n)+h*K*A(i,:)');
+        K(:,i)=f(t(n)+h*c(i), u(:,n)+h*K*A(i,:)' ,par);
     end
     u_ext=u(:,n)+h*K*b_ext;
     u_int=u(:,n)+h*K*b_int;

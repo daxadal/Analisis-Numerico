@@ -1,7 +1,7 @@
-function f= funclorenz(t,x)
+function f= funclorenz(t,x,par)
 %Sistemas de Lorenz
 %Parámetros
-sigma=10; beta=8/3; ro=110;
+sigma=par(1); beta=par(2); ro=par(3);
 %Funcion
 f=[sigma*(x(2)-x(1));
    ro*x(1)-x(2)-x(1)*x(3);
