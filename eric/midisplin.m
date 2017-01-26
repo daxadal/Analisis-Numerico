@@ -13,9 +13,9 @@ else
 end
 
 %Resolución del PVI no homogéneo
-[t1, v1]=mirk4(t0,tfin,N,v01,fundisplin1,pqr);
-%Resolución del PVI no homogéneo
-[t2, v2]=mirk4(t0,tfin,N,v02,fundisplin2,pqr);
+[t, v1]=mirk4(t0,tfin,N,v01,fundisplin1,pqr);
+%Resolución del PVI homogéneo
+[t, v2]=mirk4(t0,tfin,N,v02,fundisplin2,pqr);
 
 %Si v2(tfin)!=0, existe solución única
 if v2(:,N+1) ~= 0
@@ -27,9 +27,5 @@ if v2(:,N+1) ~= 0
 	end
     u = v1 + s * v2;
 end
-end
-	
-
-
 
 end

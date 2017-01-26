@@ -1,30 +1,20 @@
-function [t,u] = midispnolin(pqr,t0,tfin,a,b,N,c1,c2)
+function [t,v] = midispnolin(ffxfy,t0,tfin,a,b,N,c1,c2,TOL)
 %Método de disparo lineal
-%pqr: funciones lineales
+%ffxfy: funcion y sus derivadas parciales
 
 %Algoritmo
-u(:,1)=x0;
-for n=1:N
-    
-    s=u(:,n);
-    numit=0;
-    while and(norm(s,inf)>=h^3, numit < itmax)
-        Gs=s-(-b);
-        DGs=;
-        w=DGs\Gs;
-        s=s-w;
-        numit=numit+1;
-    end
-    u(:,n+1)=z;
-end
+%Resolución del PVI por Newton
+s=(b-a)/(tfin-t0); %s0
+error = 100;
+while error > TOL
+	%Resolución de los PVIs
+	[t,vwzu]=mirk4(t0,tfin,N,[a;s;0;1],fundispnolin,ffxfy);
+	
+	%Calcular s_(k+1) a partir de s_k
+	s=s-(vwzu(1,N+1)-b)/vwzu(3,N+1);
+	
+	error= vwzu(1,N+1)-b;
 end
 
-%Resolución del PVI no homogéneo
-[t1, v1]=mirk4(t0,tfin,N,v01,fundisplin1,pqr);
-%Resolución del PVI no homogéneo
-[t2, v2]=mirk4(t0,tfin,N,v02,fundisplin2,pqr);
-
-%Si v2(tfin)!=0, existe solución única
-if v2(:,N+1) ~= 0
-    u = v1 + (b-v1(:,N+1))/v2(:,N+1) * v2;
+v=vwzu(1,:);
 end
