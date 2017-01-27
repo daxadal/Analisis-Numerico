@@ -1,3 +1,4 @@
 mispracticas
-[t,u]=midispnolin(ffxfy,tinic,tfin,a,b,N,c1,c2,TOL)
-misgraficas
+[t,u,ERROR,numiter]=midispnolin(ffxfy,tinic,tfin,a,b,N,c1,c2,TOL, itmax);
+x0=u(:,1);
+misgraficasdispnolin

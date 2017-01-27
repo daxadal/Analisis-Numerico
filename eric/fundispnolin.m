@@ -1,10 +1,9 @@
-function y=fundispnolin(t,x,par)
+function y=fundispnolin(t,x,ffxfy)
 %Funcion de disparo NO lineal
-%Parámetros funcion
-f=par(1); fx=par(2); fy=par(3);
-%Funcion
+
 y=[x(2);
-   f(t,x(1),x(2));
+   feval(ffxfy{1}, t,x(1),x(2));
    x(4);
-   fy(t,x(1),x(2))*x(1)+fx(t,x(1),x(2))*x(3)];
+   feval(ffxfy{3}, t,x(1),x(2))*x(1) + ...
+    feval(ffxfy{2}, t,x(1),x(2))*x(3)];
 end

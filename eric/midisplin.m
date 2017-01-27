@@ -13,17 +13,17 @@ else
 end
 
 %Resolución del PVI no homogéneo
-[t, v1]=mirk4(t0,tfin,N,v01,fundisplin1,pqr);
+[~, v1]=mirk4(t0,tfin,N,v01,@fundisplin1,pqr);
 %Resolución del PVI homogéneo
-[t, v2]=mirk4(t0,tfin,N,v02,fundisplin2,pqr);
+[t, v2]=mirk4(t0,tfin,N,v02,@fundisplin2,pqr);
 
 %Si v2(tfin)!=0, existe solución única
 if v2(:,N+1) ~= 0
 	%Hallamos el parámetro de disparo
 	if c2==0
-		s = (b-v1(1,N+1))/v2(1,N+1) %s = (b-v1(tfin))/v2(tfin)
+		s = (b-v1(1,N+1))/v2(1,N+1); %s = (b-v1(tfin))/v2(tfin)
 	else
-		s = (b-v1(2,N+1))/v2(2,N+1) %s = (b-v1'(tfin))/v2'(tfin)
+		s = (b-v1(2,N+1))/v2(2,N+1); %s = (b-v1'(tfin))/v2'(tfin)
 	end
     u = v1 + s * v2;
 end
